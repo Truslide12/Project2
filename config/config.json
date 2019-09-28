@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": null,
-    "database": "exampledb",
+    "password": "",
+    "database": "gcb461vpdz9w11s8",
     "host": "localhost",
     "dialect": "mysql"
   },
@@ -19,3 +19,5 @@
     "dialect": "mysql"
   }
 }
+
+
