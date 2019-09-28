@@ -11,5 +11,5 @@ CREATE TABLE leaderboard
 	user_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	user_name varchar(255) NOT NULL,
 	score varchar(255) NOT NULL,
-	last_date DATETIME NOT NULL
+	last_date DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 );
