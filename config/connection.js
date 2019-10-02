@@ -1,11 +1,14 @@
-var mysql = require("mysql");
+var Sequelize = require("sequelize");
 
-var connection = mysql.createConnection({
+var sequelize = new Sequelize("rumrunner_db", "root", "", {
   host: "localhost",
   port: 3306,
-  user: "root",
-  password: "",
-  database: "rumrunner_db"
+  dialect: "mysql",
+  pool: {
+    max: 5,
+    min: 0,
+    idle: 10000
+  }
 });
 
 connection.connect(function(err) {
@@ -16,4 +19,4 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
-module.exports = connection;
+module.exports = sequelize;
