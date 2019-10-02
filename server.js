@@ -1,4 +1,4 @@
-require("dotenv").config();
+//require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
 var path = require("path");
@@ -27,7 +27,7 @@ app.set("view engine", "handlebars");
 // require("./routes/htmlRoutes")(app);
 
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "public/example.html"));
+  res.sendFile(path.join(__dirname, "public/index.html"));
 });
 
 var syncOptions = { force: false };

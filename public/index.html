@@ -16,6 +16,8 @@
 
     <script type="text/javascript">
 
+
+
         var config = {
             type: Phaser.AUTO,
             width: 800,
@@ -42,6 +44,7 @@
         var score = 0;
         var gameOver = false;
         var scoreText;
+        // var userName;
 
         var game = new Phaser.Game(config);
 
@@ -132,6 +135,15 @@
 
         function update() {
             if (gameOver) {
+                var timeStamp = Math.floor(Date.now()) / 1000;
+                // gets the userName from the player
+
+                var userName = prompt("Please enter your name", "name");
+                //localStorage.setItem("playerName", userName);
+                // 
+                finalScore = score;
+                    console.log("User: " + userName + "'s score is " + finalScore + " at " + timeStamp + ".");
+                gameOver = false;
                 return;
             }
 
