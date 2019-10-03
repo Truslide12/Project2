@@ -1,17 +1,50 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
+<div class="fullscreen-bg">
 
-          <a href="/views/login.handlebars" id="play">Login</a>
-          <a href="/views/highscores.handlebars" id="highScores">High Scores</a>
-          <a href="/views/rules.handlebars" id="rules">Rules</a>
-          <!--need to hide this until after login-->
-          <a href="/views/game.handlebars" id="play">Play</a>
-      </div>
-    </div>
-  </div>
+  <video class="fullscreen-bg__video" muted autoplay>
+    <source src="../public/assets/treasureChestVid.mp4" type="video/mp4">
+  </video>
 </div>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+<audio autoplay loop>
+  <embed src="../public/assets/Pirate Crew(2).wav" hidden="true" autostart="true" loop>
+</audio>
+
+<!-- MAIN CONTENT SECTION -->
+<section class="wrapper">
+  <div>
+    <img id="thoughtBubble" src="../public/assets/thoughtBubble3.png">
+
+    <button type="button" class="btn btn-play" id="beardedScallyWag"><img
+        src="../public/assets/smTransparentPirate.gif"><a href=""></a>
+    </button>
+  </div>
+
+  <ul type="I" class="directions">
+    <li id="dTitle">HOW TO PLAY</li>
+    <li>Press Ye Arrow Keys To Move Ye Little Peg Legs</li>
+    <li>Steal Me Treasure For Points</li>
+    <li>Beware! This Place Be Booby Trapped!</li>
+  </ul>
+
+  <!-- <h2 class="leaderB">Leaderboard</h2> -->
+</section>
+
+<script>
+
+  $(document).ready(function () {
+    $('.btn-play').hide().delay(8500).fadeIn(2200);
+  });
+  $(document).ready(function () {
+    $('.playTitle').hide().delay(8500).fadeIn(2200);
+  });
+  $(document).ready(function () {
+    $('.directions').hide().delay(8500).fadeIn(2200);
+  });
+  $(document).ready(function () {
+    $('.leaderB').hide().delay(8500).fadeIn(2200);
+  });
+  $(document).ready(function () {
+    $('#thoughtBubble').hide().delay(8500).fadeIn(2200);
+  });
+
+</script>
