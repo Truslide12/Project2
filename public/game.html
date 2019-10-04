@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-
+​
 <head>
     <meta charset="UTF-8" />
     <title>Making your first Phaser 3 Game - Part 10</title>
@@ -12,10 +12,10 @@
         }
     </style>
 </head>
-
 <body>
-
+    ​
     <script type="text/javascript">
+
         var config = {
             type: Phaser.AUTO,
             width: 1024,
@@ -51,9 +51,9 @@
             //this.load.path = ('../routes/') // load the api routes (may not be needed)
             this.load.image('background', '../assets/pirateShip.png');
             //this.load.image('')
-            this.load.image('ground', 'assets/platform.png');
-            this.load.image('coin', 'assets/goldcoin.png');
-            this.load.image('bomb', 'assets/bomb.png');
+            this.load.image('ground', '../assets/platform.png');
+            this.load.image('coin', '../assets/goldcoin.png');
+            this.load.image('bomb', '../assets/bomb.png');
             // Load the Character spritesheet
             this.load.spritesheet("captain", '../assets/captain-m-001-light.png', {
                 frameWidth: 48,
@@ -228,6 +228,7 @@
         function collectCoin(player, coin) {
             coin.disableBody(true, true);
             // this.starsBurst.explode();
+
             //  Add and update the score
             score += 10;
             scoreText.setText('Score: ' + score);
@@ -263,15 +264,6 @@
             gameOverText.visible = true;
         }
 
-        // Function to post data to database
-        // need to get api input format from Zack
-        module.exports = {
-            userName: userName,
-            score: finalScore,
-            last_date: timeStamp
-        };
     </script>
-
 </body>
-
 </html>
