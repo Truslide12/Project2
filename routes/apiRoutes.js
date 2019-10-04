@@ -15,7 +15,7 @@ app.get("/api/posts/scores/:scores", function(req, res) {
     where: {
       scores: req.params.scores
     },
-    order: [["id", "DESC"], ["scores", "DESC"], ["last_date", "DESC"]]
+    order: [["scores", "DESC"], ["last_date"]]
   }).then(function(dbPost) {
     res.json(dbPost);
   });
