@@ -10,25 +10,26 @@
     <link href="https://fonts.googleapis.com/css?family=Grenze:300i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Grenze:200i&display=swap" rel="stylesheet">
 </head>
-<body>
-    
+
+<body>  
+    <div>  
+        <audio id="backSong" controls autoplay loop hidden>
+            <source src="../public/assets/pirateBackgroundSong.mp3" type="audio/mp3">
+            <embed src="../public/assets/pirateBackgroundSong.mp3" autostart="1" loop="1" hidden="1">
+        </audio>
+    </div>
     <div class="fullscreen-bg">
-    
         <video class="fullscreen-bg__video" muted autoplay>
             <source src="../public/assets/treasureChestVid.mp4" type="video/mp4">
         </video>
     </div>
-
-    <audio autoplay loop>
-        <embed src="../public/assets/Pirate Crew(2).wav" hidden="true" autostart="true" loop>
-    </audio>
     
-    <!-- MAIN CONTENT SECTION -->
+        <!-- MAIN CONTENT SECTION -->
     <section class="wrapper">
         <div>
             <img id="thoughtBubble" src="../public/assets/thoughtBubble3.png">
         
-            <button type="button" class="btn btn-play" id="beardedScallyWag"><img src="../public/assets/smTransparentPirate.gif"><a href=""></a>
+            <button type="button" class="btn btn-play" id="beardedScallyWag"><img src="../public/assets/smTransparentPirate.gif"><a href="/game"></a>
             </button>
         </div>
 

@@ -44,7 +44,9 @@
     display: none;
   }
 }
-
+#backSong{
+  z-index: 1000;
+}
 .wrapper{
   margin-top: 360px;
 }
@@ -55,14 +57,15 @@ button:hover{
 
 .btn-play{
   float: left;
-  padding-left: 270px;
+  margin-left: 270px;
   background-color: transparent;
   height: 5px;
   width: 10px;
   opacity: 1;
-  z-index: -100;
+  /* z-index: -100; */
   border: none;
   position: absolute;
+  cursor: pointer;
 }
 
 .playTitle{
@@ -87,7 +90,7 @@ button:hover{
   line-height: 2;
   color: rgb(38, 24, 14);
   opacity: .8;
-  z-index: 1;
+  z-index: -100;
   position: absolute;
 }
 
