@@ -1,27 +1,25 @@
-var db = require("../models");
+// *********************************************************************************
+// html-routes.js - this file offers a set of routes for sending users to the various html pages
+// *********************************************************************************
 
+// Dependencies
+// =============================================================
+var path = require("path");
+
+// Routes
+// =============================================================
 module.exports = function(app) {
-  // Load index page
+  // Each of the below routes just handles the HTML page that the user gets sent to.
+
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
+    res.sendFile(path.join(__dirname, "../public/index.html"));
   });
 
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
+  app.get("/game", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/game.html"));
   });
 
-  // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
-    res.render("404");
-  });
+  // app.get("/all", function(req, res) {
+  //   res.sendFile(path.join(__dirname, "../public/all.html"));
+  // });
 };
