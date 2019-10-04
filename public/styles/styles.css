@@ -110,14 +110,36 @@ padding-top: 0; */
 }
 
 .leaderB{
-  float: left;
-  margin-top: 360px;
-  margin-left: 150px;
+  align-content: center;
+  margin-top: 150px;
+  margin-left: 250px;
   color: rgb(38, 24, 14);
   font-family: 'Grenze', serif;
-  font-size: 40px;
+  font-size: 60px;
   text-decoration: underline;
   opacity: .8;
+}
+
+.links {
+  background-color: burlywood;
+  font-size: 30px;
+  margin-top: 50px;
+}
+table {
+  padding-left: 50px;
+}
+
+th {
+  width: 25%;
+  font-size: 60px;
+}
+
+tr {
+  font-size: 40px;
+}
+
+td {
+  width: 25%;
 }
 
 #thoughtBubble{
