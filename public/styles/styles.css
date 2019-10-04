@@ -45,6 +45,10 @@
   }
 }
 
+#backSong{
+  z-index: 1000;
+}
+
 .wrapper{
   margin-top: 360px;
 }
@@ -55,7 +59,7 @@ button:hover{
 
 .btn-play{
   float: left;
-  padding-left: 270px;
+  margin-left: 270px;
   background-color: transparent;
   height: 5px;
   width: 10px;
@@ -63,6 +67,7 @@ button:hover{
   z-index: 1;
   border: none;
   position: absolute;
+  cursor: pointer;
 }
 
 .playTitle{
@@ -73,7 +78,7 @@ button:hover{
   font-size: 20px;
   color: rgb(55, 36, 21);
   opacity: .8;
-  z-index: 1;
+  z-index: -100;
   position: absolute; 
 }
 

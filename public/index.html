@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+
     <title>Rum Runner</title>
     <link rel="stylesheet" href="./styles/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Grenze:300i&display=swap" rel="stylesheet">
@@ -12,10 +13,17 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
+
 <body>
-    
+
+    <div>
+        <audio id="backSong" controls autoplay loop hidden>
+            <source src="./assets/pirateBackgroundSong.mp3" type="audio/mp3">
+            <embed src="./assets/pirateBackgroundSong.mp3" autostart="1" loop="1" hidden="1">
+        </audio>
+    </div>
+
     <div class="fullscreen-bg">
-    
         <video class="fullscreen-bg__video" muted autoplay>
             <source src="./assets/treasureChestVid.mp4" type="video/mp4">
         </video>
@@ -24,13 +32,14 @@
     <audio autoplay loop>
         <embed src="./assets/Pirate Crew(2).wav" hidden="true" autostart="true" loop>
     </audio>
-    
+
     <!-- MAIN CONTENT SECTION -->
     <section class="wrapper">
         <div>
             <img id="thoughtBubble" src="./assets/thoughtBubble3.png">
-        
-            <button type="button" class="btn btn-play" id="beardedScallyWag"><img src="./assets/smTransparentPirate.gif"><a href=""></a>
+
+            <button type="button" class="btn btn-play" id="beardedScallyWag"><img
+                    src="./assets/smTransparentPirate.gif"><a href=""></a>
             </button>
         </div>
 
@@ -40,33 +49,33 @@
             <li>Steal Me Treasure For Points</li>
             <li>Beware! This Place Be Booby Trapped!</li>
         </ul>
-    
+
         <!-- <h2 class="leaderB">Leaderboard</h2> -->
 
     </section>
 
     <script>
 
-        $("#beardedScallyWag").on("click", function() {
+        $("#beardedScallyWag").on("click", function () {
             window.location.href = "./game";
         });
 
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.btn-play').hide().delay(8500).fadeIn(2200);
         });
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.playTitle').hide().delay(8500).fadeIn(2200);
         });
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.directions').hide().delay(8500).fadeIn(2200);
         });
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('.leaderB').hide().delay(8500).fadeIn(2200);
         });
-        $(document).ready(function() {
+        $(document).ready(function () {
             $('#thoughtBubble').hide().delay(8500).fadeIn(2200);
         });
-       
+
     </script>
 </body>
 </html>
