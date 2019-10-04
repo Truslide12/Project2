@@ -60,7 +60,7 @@ button:hover{
   height: 5px;
   width: 10px;
   opacity: 1;
-  z-index: -100;
+  z-index: 1;
   border: none;
   position: absolute;
 }
@@ -87,7 +87,7 @@ button:hover{
   line-height: 2;
   color: rgb(38, 24, 14);
   opacity: .8;
-  z-index: 1;
+  z-index: -100;
   position: absolute;
 }
 
