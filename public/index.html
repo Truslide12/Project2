@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>Rum Runners</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Grenze:300i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Grenze:200i&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+    <div class="fullscreen-bg">
+    
+        <video class="fullscreen-bg__video" muted autoplay>
+            <source src="./assets/treasureChestVid.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <audio autoplay loop>
+        <embed src="./assets/Pirate Crew(2).wav" hidden="true" autostart="true" loop>
+    </audio>
+    
+    <!-- MAIN CONTENT SECTION -->
+    <section class="wrapper">
+        <div>
+            <img id="thoughtBubble" src="./assets/thoughtBubble3.png">
+        
+            <button type="button" class="btn btn-play" id="beardedScallyWag"><img src="./assets/smTransparentPirate.gif"><a href=""></a>
+            </button>
+        </div>
+
+        <ul type="I" class="directions">
+            <li id="dTitle">HOW TO PLAY</li>
+            <li>Press Ye Arrow Keys To Move Ye Little Peg Legs</li>
+            <li>Steal Me Treasure For Points</li>
+            <li>Beware! This Place Be Booby Trapped!</li>
+        </ul>
+    
+        <!-- <h2 class="leaderB">Leaderboard</h2> -->
+    </section>
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./js/index.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.btn-play').hide().delay(8500).fadeIn(2200);
+        });
+        $(document).ready(function() {
+            $('.playTitle').hide().delay(8500).fadeIn(2200);
+        });
+        $(document).ready(function() {
+            $('.directions').hide().delay(8500).fadeIn(2200);
+        });
+        $(document).ready(function() {
+            $('.leaderB').hide().delay(8500).fadeIn(2200);
+        });
+        $(document).ready(function() {
+            $('#thoughtBubble').hide().delay(8500).fadeIn(2200);
+        });
+       
+
+    </script>
+
+</body>
+</html>
