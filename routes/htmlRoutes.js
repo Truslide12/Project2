@@ -19,6 +19,10 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/game.html"));
   });
 
+  app.get("/board", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/leaderboard.html"));
+  });
+
   // app.get("/all", function(req, res) {
   //   res.sendFile(path.join(__dirname, "../public/all.html"));
   // });

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        
+        <title>Rum Runner</title>
+        
+        <link rel="stylesheet" href="./styles/styles.css">
+        <link href="https://fonts.googleapis.com/css?family=Grenze:300i&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Grenze:200i&display=swap" rel="stylesheet">
+        
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <h2>leaderboard</h2>
+    <div id="leaderboard-containter">
+        <table>
+            <tr>
+                <th>Player Name</th>
+                <th>Score</th>
+                <th>Date</th>
+            </tr>
+            <!-- Appned table date here  -->
+        </table>
+    </div>
+    <script>
+        $(document).ready(function () {
+            // leaderboardContainer holds all of our posts
+            var leaderboardContainer = $(".leaderboard-container");
+            var posts;
+            function getPosts(category) {
+                $.get("/api/posts/scores/", function (data) {
+                    console.log("Posts", data);
+                    posts = data;
+                    if (!posts || !posts.length) {
+                        displayEmpty();
+                    }
+                    else {
+                        createTable();
+                    }
+                });
+            }
+
+            // Getting the initial list of posts
+            getPosts();
+            // InitializeRows handles appending all of our constructed post HTML inside
+            // leaderboardContainer
+            function loadData() {
+                var postsToAdd = [];
+                for (var i = 0; i < posts.length; i++) {
+                    postsToAdd.push(createNewRow(posts[i]));
+                    var formattedDate = new Date(post.last_date);
+                    $('#leaderboard-containter').append('<tr><td>' + posts.user_name[i] + '</td> <td>' + posts.score[i] + '</td> <td>' + posts.formattedDate + '</td></tr>');
+                }
+                leaderboardContainer.append(postsToAdd);
+            }
+        })
+
+    </script>
+</body>
+</html>
