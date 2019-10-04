@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
-    <title>Rum Runners</title>
+    <title>Rum Runner</title>
     <link rel="stylesheet" href="./styles/styles.css">
     <link href="https://fonts.googleapis.com/css?family=Grenze:300i&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Grenze:200i&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
     
@@ -40,12 +42,15 @@
         </ul>
     
         <!-- <h2 class="leaderB">Leaderboard</h2> -->
+
     </section>
 
-
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./js/index.js"></script>
     <script>
+
+        $("#beardedScallyWag").on("click", function() {
+            window.location.href = "./game";
+        });
+
         $(document).ready(function() {
             $('.btn-play').hide().delay(8500).fadeIn(2200);
         });
@@ -62,8 +67,6 @@
             $('#thoughtBubble').hide().delay(8500).fadeIn(2200);
         });
        
-
     </script>
-
 </body>
 </html>
