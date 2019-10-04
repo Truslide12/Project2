@@ -1,11 +1,11 @@
-var mysql = require("mysql");
+var Sequelize = require("sequelize");
 
 var connection = mysql.createConnection({
-  host: "localhost",
+  host: "pwcspfbyl73eccbn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
   port: 3306,
-  user: "root",
-  password: "",
-  database: "rumrunner_db"
+  user: "opseet0aa15tb506",
+  password: "rbw363pxpyfmhtxx",
+  database: "gcb461vpdz9w11s8"
 });
 
 connection.connect(function(err) {
@@ -16,4 +16,4 @@ connection.connect(function(err) {
   console.log("connected as id " + connection.threadId);
 });
 
-module.exports = connection;
+module.exports = sequelize;

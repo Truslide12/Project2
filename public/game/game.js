@@ -14,6 +14,12 @@ var config = {
         create: create,
         update: update
     }
+  },
+  scene: {
+    preload: preload,
+    create: create,
+    update: update
+  }
 };
 
 var player;
@@ -222,7 +228,9 @@ function collectCoin(player, coin) {
 
         });
 
-        var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+  //  Add and update the score
+  score += 10;
+  scoreText.setText("Score: " + score);
 
         var bomb = bombs.create(x, 16, 'bomb');
         bomb.setBounce(1);
@@ -230,15 +238,25 @@ function collectCoin(player, coin) {
         bomb.setVelocity(Phaser.Math.Between(-200, 200), 30);
         bomb.allowGravity = false;
 
-    }
+    var x =
+      player.x < 400
+        ? Phaser.Math.Between(400, 800)
+        : Phaser.Math.Between(0, 400);
+
+    var bomb = bombs.create(x, 16, "bomb");
+    bomb.setBounce(1);
+    bomb.setCollideWorldBounds(true);
+    bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+    bomb.allowGravity = false;
+  }
 }
 
 function hitBomb(player, bomb) {
-    this.physics.pause();
+  this.physics.pause();
 
-    player.setTint(0xff0000);
+  player.setTint(0xff0000);
 
-    player.anims.play('turn');
+  player.anims.play("turn");
 
     gameOver = true;
 
