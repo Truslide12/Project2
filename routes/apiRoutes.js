@@ -34,8 +34,7 @@ app.get("/api/posts/scores/:scores", function(req, res) {
 // });
 ​
 // POST route for saving a new post
-app
-  .post("/api/posts", function(req, res) {
+app.post("/api/posts", function(req, res) {
     console.log(req.body);
     db.Post.create({
       id: req.body.id,

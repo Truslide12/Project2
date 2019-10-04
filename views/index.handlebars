@@ -48,6 +48,13 @@
   $(document).ready(function () {
     $('#thoughtBubble').hide().delay(8500).fadeIn(2200);
   });
+  // code to create link in handlebars
+  handlebars.registerHelper('attr', function (name, data) {
+    if (typeof target === 'undefined') target = "";
 
+    var result = ' ' + name + '="' + data + '" ';
+
+    return new handlebars.SafeString(result);
+  }); // should return this <a target="_blank" {{attr 'href' general.link}}><img src="assets/images/nice_image.png" class="link-icon" /></a>
 
 </script>

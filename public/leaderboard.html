@@ -1,23 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        
-        <title>Rum Runner</title>
-        
-        <link rel="stylesheet" href="./styles/styles.css">
-        <link href="https://fonts.googleapis.com/css?family=Grenze:300i&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Grenze:200i&display=swap" rel="stylesheet">
-        
-        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Rum Runner</title>
+
+    <link rel="stylesheet" href="./styles/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Grenze:300i&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Grenze:200i&display=swap" rel="stylesheet">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        body {
+            background-image: url("./assets/scroll.png");
+            background-position: center top;
+            background-size: 100% auto;
+            background-color: black;
+        }
+
+        h2 {
+            align-content: center;
+            margin-top: 40px;
+            margin-left: 620px;
+            color: rgb(38, 24, 14);
+            font-family: 'Grenze', serif;
+            font-size: 90px;
+            text-decoration: underline;
+            opacity: .8;
+        }
+    </style>
 </head>
 
 <body>
-    <h2>leaderboard</h2>
-    <div id="leaderboard-containter">
+    <div>
+        <a href="./index.html" class="links">Home</a>
+        <h2>Leaderboard</h2>
+        <a href="./game.html" class="links">Play</a>
+    </div>
+    <div id="leaderboard-containter" class="leaderB">
         <table>
             <tr>
                 <th>Player Name</th>
@@ -51,15 +74,36 @@
             // leaderboardContainer
             function loadData() {
                 var postsToAdd = [];
-                for (var i = 0; i < posts.length; i++) {
-                    postsToAdd.push(createNewRow(posts[i]));
-                    var formattedDate = new Date(post.last_date);
-                    $('#leaderboard-containter').append('<tr><td>' + posts.user_name[i] + '</td> <td>' + posts.score[i] + '</td> <td>' + posts.formattedDate + '</td></tr>');
-                }
-                leaderboardContainer.append(postsToAdd);
+                $.ajax({
+                    url: 'leaderboard.html',
+                    type: 'post',
+                    data: { columnName: score, sort: sort },
+                    success: function (response) {
+
+                        for (var i = 0; i < posts.length; i++) {
+                            postsToAdd.push(createNewRow(posts[i]));
+                            var formattedDate = new Date(post.last_date);
+                            $('#leaderboard-containter').append('<tr><td>' + posts.user_name[i] + '</td> <td>' + posts.score[i] + '</td> <td>' + posts.formattedDate + '</td></tr>');
+                        }
+                        leaderboardContainer.append(postsToAdd);
+
+                    }
+
+                    // another option with sequelize
+                    //                 AnotherModel.getUsers({
+                    //     include: [ { model: Scores, as: 'scores' } ],
+                    //     order: [[Sequelize.literal("scores.score"), 'DESC']]
+                    // }).then(function(users) {
+
+                    // users.projects will be sorted
+
+                    // });
+                });
+
             }
         })
 
     </script>
 </body>
+
 </html>

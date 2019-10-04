@@ -177,18 +177,18 @@ function update() {
 
         $.ajax({
             method: "POST",
-            url: "/api/scores",
+            url: "/api/posts/scores",
             data: gameData
         })
         // Reset gameOver to prevent update() loop and prepare game to restart
         gameOver = false;
-        // window.confirm("Would you like to play again?");
-        // // add call to start function again
-        // if (confirm) {
-        //     this.game.state.restart()
-        // } else {
+        window.confirm("Would you like to play again?");
+        // add call to start function again
+        if (confirm) {
+            location.reload();
+        } else {
         return;
-        // }
+        }
 
     }
 

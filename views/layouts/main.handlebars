@@ -15,12 +15,18 @@
   
   <link href="https://fonts.googleapis.com/css?family=Grenze:300i&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Grenze:200i&display=swap" rel="stylesheet">
-
+    {{#each css}}
+        <link rel="stylesheet" href="/css/{{this}}">
+    {{/each}}
   {{!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> --}}
 </head>
 
 <body>
   {{{body}}}
+      {{#each js}}
+        <script src="/js/{{this}}"></script>
+    {{/each}}
+
 </body>
 
 </html>
