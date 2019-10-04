@@ -1,6 +1,7 @@
 require("dotenv").config();
 var express = require("express");
 var exphbs = require("express-handlebars");
+// eslint-disable-next-line no-unused-vars
 var path = require("path");
 
 // var db = require("./models");
@@ -24,9 +25,9 @@ app.set("view engine", "handlebars");
 
 // Routes
 // require("./routes/apiRoutes")(app);
-// require("./routes/htmlRoutes")(app);
-var routes = require("./routes/gameController.js");
-app.use(routes);
+require("./routes/htmlRoutes")(app);
+// var routes = require("./routes/gameController.js");
+// app.use(routes);
 
 // Route to load game via example.html
 // app.get("/", function (req, res) {
