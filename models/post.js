@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
       }
     },
     last_date: {
-      type: DataTypes.DATETIME
+      type: DataTypes.DATE
     }
   });
   return Post;

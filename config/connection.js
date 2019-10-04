@@ -1,14 +1,11 @@
 var Sequelize = require("sequelize");
 
-var sequelize = new Sequelize("rumrunner_db", "root", "", {
-  host: "localhost",
+var connection = mysql.createConnection({
+  host: "pwcspfbyl73eccbn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
   port: 3306,
-  dialect: "mysql",
-  pool: {
-    max: 5,
-    min: 0,
-    idle: 10000
-  }
+  user: "opseet0aa15tb506",
+  password: "rbw363pxpyfmhtxx",
+  database: "gcb461vpdz9w11s8"
 });
 
 connection.connect(function(err) {
