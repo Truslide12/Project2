@@ -36,9 +36,9 @@
 
 <body>
     <div>
-        <a href="./index.html" class="links">Home</a>
+        <a href="/" class="links">Home</a>
         <h2>Leaderboard</h2>
-        <a href="./game.html" class="links">Play</a>
+        <a href="/game" class="links">Play</a>
     </div>
     <div id="leaderboard-containter" class="leaderB">
         <table>
@@ -50,11 +50,14 @@
             <!-- Appned table date here  -->
         </table>
     </div>
+
     <script>
+
         $(document).ready(function () {
             // leaderboardContainer holds all of our posts
             var leaderboardContainer = $(".leaderboard-container");
             var posts;
+
             function getPosts(category) {
                 $.get("/api/posts/scores/", function (data) {
                     console.log("Posts", data);
@@ -67,11 +70,12 @@
                     }
                 });
             }
-
             // Getting the initial list of posts
             getPosts();
+
             // InitializeRows handles appending all of our constructed post HTML inside
             // leaderboardContainer
+
             function loadData() {
                 var postsToAdd = [];
                 $.ajax({
@@ -86,9 +90,7 @@
                             $('#leaderboard-containter').append('<tr><td>' + posts.user_name[i] + '</td> <td>' + posts.score[i] + '</td> <td>' + posts.formattedDate + '</td></tr>');
                         }
                         leaderboardContainer.append(postsToAdd);
-
                     }
-
                     // another option with sequelize
                     //                 AnotherModel.getUsers({
                     //     include: [ { model: Scores, as: 'scores' } ],
@@ -99,7 +101,6 @@
 
                     // });
                 });
-
             }
         })
 

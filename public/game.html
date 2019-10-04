@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-​
+
 <head>
     <meta charset="UTF-8" />
     <title>Rum Runner</title>
@@ -12,6 +12,7 @@
         }
     </style>
 </head>
+
 <body>
     ​
     <script type="text/javascript">
@@ -192,7 +193,7 @@
                     url: "/api/posts/scores",
                     data: gameData
                 })
-            
+
                 // Reset gameOver to prevent update() loop and prepare game to restart
                 gameOver = false;
                 window.confirm("Would you like to play again?");
@@ -200,7 +201,7 @@
                 if (confirm) {
                     location.reload();
                 } else {
-                return;
+                    return;
                 }
             }
 
@@ -264,5 +265,12 @@
             gameOverText.visible = true;
         }
     </script>
+
+    <hr>
+
+    <a href="/" class="links">Home</a>
+    <a href="/board" class="links">Leaderboard</a>
+
 </body>
+
 </html>
