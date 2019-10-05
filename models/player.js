@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    scores: {
+    score: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {

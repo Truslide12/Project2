@@ -1,6 +1,6 @@
 require("dotenv").config();
 var express = require("express");
-var exphbs = require("express-handlebars");
+//var exphbs = require("express-handlebars");
 var path = require("path");
 
 var db = require("./models");
@@ -26,13 +26,13 @@ app.use(express.static("public"));
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
 
-// var routes = require("./routes/gameController.js");
-// app.use(routes);
+var routes = require("./routes/gameController.js");
+app.use(routes);
 
 // Route to load game via example.html
-// app.get("/", function (req, res) {
-//   res.sendFile(path.join(__dirname, "public/index.html"));
-// });
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname, "public/index.html"));
+});
 
 var syncOptions = { force: false };
 

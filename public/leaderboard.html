@@ -54,42 +54,40 @@
     <script>
 
         $(document).ready(function () {
-            // leaderboardContainer holds all of our posts
+            // leaderboardContainer holds all of our player's scores
+            var app = require("../models")
             var leaderboardContainer = $(".leaderboard-container");
-            var posts;
+            var players;
 
-            function getPosts(category) {
-                $.get("/api/posts/scores/", function (data) {
-                    console.log("Posts", data);
-                    posts = data;
-                    if (!posts || !posts.length) {
-                        displayEmpty();
-                    }
-                    else {
-                        createTable();
-                    }
+            function getPlayers() {
+                app.get("/api/player", function (req, res) {
+                    db.Player.findAll({
+                        order: ["score"]
+                    }).then(function (dbPlayers) {
+                        res.json(dbPlayers);
+                    });
                 });
             }
             // Getting the initial list of posts
-            getPosts();
+            getPlayers();
 
             // InitializeRows handles appending all of our constructed post HTML inside
             // leaderboardContainer
 
             function loadData() {
-                var postsToAdd = [];
+                var PlayersToAdd = [];
                 $.ajax({
-                    url: 'leaderboard.html',
+                    url: 'api/player',
                     type: 'post',
                     data: { columnName: score, sort: sort },
                     success: function (response) {
 
-                        for (var i = 0; i < posts.length; i++) {
-                            postsToAdd.push(createNewRow(posts[i]));
-                            var formattedDate = new Date(post.last_date);
-                            $('#leaderboard-containter').append('<tr><td>' + posts.user_name[i] + '</td> <td>' + posts.score[i] + '</td> <td>' + posts.formattedDate + '</td></tr>');
+                        for (var i = 0; i < players.length; i++) {
+                            playersToAdd.push(createNewRow(players[i]));
+                            var formattedDate = new Date(players.last_date);
+                            $('#leaderboard-containter').append('<tr><td>' + players.user_name[i] + '</td> <td>' + players.score[i] + '</td> <td>' + posts.formattedDate + '</td></tr>');
                         }
-                        leaderboardContainer.append(postsToAdd);
+                        leaderboardContainer.append(playersToAdd);
                     }
                     // another option with sequelize
                     //                 AnotherModel.getUsers({
