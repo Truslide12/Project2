@@ -182,16 +182,17 @@
                 // Check that data was store successfuly
                 console.log("User: " + userName + "'s score is " + finalScore + " at " + timeStamp + ".");
 
-                var gameData = {
-                    userName: userName,
-                    score: finalScore,
-                    date: timeStamp
+                var data = {
+                    "include": [
+                    {"Player.user_name": userName},
+                    {"Player.score": finalScore},
+                ]
                 }
 
                 $.ajax({
                     method: "POST",
-                    url: "/api/posts/scores",
-                    data: gameData
+                    url: "/api/player",
+                    data: data
                 })
 
                 // Reset gameOver to prevent update() loop and prepare game to restart
