@@ -1,12 +1,20 @@
 var Sequelize = require("sequelize");
 
 var connection = mysql.createConnection({
-  host: "pwcspfbyl73eccbn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+  host: "localhost",
   port: 3306,
-  user: "opseet0aa15tb506",
-  password: "rbw363pxpyfmhtxx",
-  database: "gcb461vpdz9w11s8"
+  user: "root",
+  password: "",
+  database: "rumrunner_db"
 });
+
+// var connection = mysql.createConnection({
+//   host: "pwcspfbyl73eccbn.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+//   port: 3306,
+//   user: "opseet0aa15tb506",
+//   password: "rbw363pxpyfmhtxx",
+//   database: "gcb461vpdz9w11s8"
+// });
 
 connection.connect(function(err) {
   if (err) {
