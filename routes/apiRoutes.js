@@ -10,6 +10,7 @@ module.exports = function(app) {
 
   // Create a new example
   app.post("/api/player", function(req, res) {
+    console.log(req.body);
     db.Player.create(req.body).then(function(dbPlayer) {
       res.json(dbPlayer);
     });

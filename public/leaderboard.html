@@ -62,47 +62,36 @@
             function getPlayers() {
                 app.get("/api/player", function (req, res) {
                     db.Player.findAll({
-                        order: ["score"]
-                    }).then(function (dbPlayers) {
-                        res.json(dbPlayers);
-                    });
+                        //order: ["score"]
+                    }).then(function() {
+                                $.each(res, function(i, player) {
+                                    var $tr = $('<tr>').append(
+                                        $('<td>').text(player.user_name),
+                                        $('<td>').text(player.score),
+                                    ); 
+                                });
+                            });
                 });
             }
+
             // Getting the initial list of posts
             getPlayers();
 
             // InitializeRows handles appending all of our constructed post HTML inside
             // leaderboardContainer
 
-            function loadData() {
-                var PlayersToAdd = [];
-                $.ajax({
-                    url: 'api/player',
-                    type: 'post',
-                    data: { columnName: score, sort: sort },
-                    success: function (response) {
-
-                        for (var i = 0; i < players.length; i++) {
-                            playersToAdd.push(createNewRow(players[i]));
-                            var formattedDate = new Date(players.last_date);
-                            $('#leaderboard-containter').append('<tr><td>' + players.user_name[i] + '</td> <td>' + players.score[i] + '</td> <td>' + posts.formattedDate + '</td></tr>');
-                        }
-                        leaderboardContainer.append(playersToAdd);
-                    }
-                    // another option with sequelize
-                    //                 AnotherModel.getUsers({
-                    //     include: [ { model: Scores, as: 'scores' } ],
-                    //     order: [[Sequelize.literal("scores.score"), 'DESC']]
-                    // }).then(function(users) {
-
-                    // users.projects will be sorted
-
-                    // });
-                });
-            }
-        })
-
-    </script>
-</body>
-
-</html>
+            // function loadData() {
+            //     var PlayersToAdd = [];
+            //     $.ajax({
+            //         url: 'api/player',
+            //         type: 'post',
+            //         data: { columnName: score, sort: sort },
+            //         response = $.parseJSON(response)
+            //     });
+            //     }
+         })
+            
+            </script>
+            </body>
+            
+            </html>
