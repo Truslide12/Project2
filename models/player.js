@@ -1,5 +1,5 @@
-module.exports = function (sequelize, DataTypes) {
-  var Post = sequelize.define("Post", {
+module.exports = function(sequelize, DataTypes) {
+  var Player = sequelize.define("Player", {
     user_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -7,16 +7,13 @@ module.exports = function (sequelize, DataTypes) {
         len: [1]
       }
     },
-    scores: {
+    score: {
       type: DataTypes.TEXT,
       allowNull: false,
       validate: {
         len: [1]
       }
-    },
-    last_date: {
-      type: DataTypes.DATE
     }
   });
-  return Post;
+  return Player;
 };

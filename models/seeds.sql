@@ -1,2 +1,10 @@
 INSERT INTO leaderboard (user_name, score, last_date) VALUES ('Topdog', '50', CURRENT_TIMESTAMP);
-INSERT INTO leaderboard (user_name, score, last_date) VALUES ('BigDog', '75', CURRENT_TIMESTAMP);
+INSERT INTO leaderboard (user_name, score, last_date) VALUES ('Mitch', '75', CURRENT_TIMESTAMP);
+INSERT INTO leaderboard (user_name, score, last_date) VALUES ('Belinda', '150', CURRENT_TIMESTAMP);
+INSERT INTO leaderboard (user_name, score, last_date) VALUES ('Ralph', '175', CURRENT_TIMESTAMP);
+INSERT INTO leaderboard (user_name, score, last_date) VALUES ('Becky', '120', CURRENT_TIMESTAMP);
+INSERT INTO leaderboard (user_name, score, last_date) VALUES ('Kim', '145', CURRENT_TIMESTAMP);
+INSERT INTO leaderboard (user_name, score, last_date) VALUES ('Duke', '210', CURRENT_TIMESTAMP);
+INSERT INTO leaderboard (user_name, score, last_date) VALUES ('Alfred', '40', CURRENT_TIMESTAMP);
+INSERT INTO leaderboard (user_name, score, last_date) VALUES ('Cliff', '90', CURRENT_TIMESTAMP);
+INSERT INTO leaderboard (user_name, score, last_date) VALUES ('Amanda', '180', CURRENT_TIMESTAMP);

@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "",
-    "database": "gcb461vpdz9w11s8",
+    "database": "rumrunner_db",
     "host": "localhost",
     "dialect": "mysql"
   },
