@@ -189,30 +189,28 @@
                 // Check that data was store successfuly
                 console.log("User: " + userName + "'s score is " + finalScore + " at " + timeStamp + ".");
 
-                var data = {
-                    "include": [
-                        { "Player.user_name": userName },
-                        { "Player.score": finalScore },
-                    ]
-                }
+
 
                 $.ajax({
                     method: "POST",
                     url: "/api/player",
-                    data: data
-                }).then((response) => {
-                    console.log(response);
+                    data: { username: userName, score: finalScore}
+
+                }).then((res) => {
+                    console.log(res);
                 })
 
                 // Reset gameOver to prevent update() loop and prepare game to restart
+
+                gameOverText.visible = true;
                 gameOver = false;
-                window.alert("Press any button to play again?");
-                // add call to start function again
-                if (confirm) {
-                    location.reload();
-                } else {
-                    return;
-                }
+                // if (this.spacebar.isDown) {
+                //     // add call to start function again
+                //     console.log('Spacebar is pressed');
+                //     location.reload();
+                // } else {
+                return;
+                // }
             }
 
             if (cursors.left.isDown) {
@@ -281,17 +279,15 @@
             player.setTint(0xff0000);
 
             player.anims.play('turn');
-            
+
             // and action sounds
             let explosion = this.sound.add('explosion', {
                 volume: 1,
                 loop: false
             });
-            explosion.play();  
+            explosion.play();
 
             gameOver = true;
-
-            gameOverText.visible = true;
         }
     </script>
 

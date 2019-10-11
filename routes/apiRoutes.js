@@ -3,7 +3,10 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all examples
   app.get("/api/player", function(req, res) {
-    db.Player.findAll({}).then(function(dbPlayer) {
+    db.Player.findAll({
+      limit: 10,
+      order: [["score", "DESC"]]
+    }).then(function(dbPlayer) {
       res.json(dbPlayer);
     });
   });

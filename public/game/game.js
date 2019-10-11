@@ -14,12 +14,6 @@ var config = {
         create: create,
         update: update
     }
-  },
-  scene: {
-    preload: preload,
-    create: create,
-    update: update
-  }
 };
 
 var player;
@@ -30,6 +24,9 @@ var cursors;
 var score = 0;
 var gameOver = false;
 var scoreText;
+var explosion;
+var kaching;
+var jump;
 // var highScore = JSON.parse 
 // var userName;
 
@@ -39,22 +36,27 @@ function preload() {
     //this.load.path = ('../routes/') // load the api routes (may not be needed)
     this.load.image('background', '../assets/pirateShip.png');
     //this.load.image('')
-    this.load.image('ground', 'assets/platform.png');
-    this.load.image('coin', 'assets/goldcoin.png');
-    this.load.image('bomb', 'assets/bomb.png');
+    this.load.image('ground', '../assets/platform.png');
+    this.load.image('coin', '../assets/goldcoin.png');
+    this.load.image('bomb', '../assets/bomb.png');
     // Load the Character spritesheet
     this.load.spritesheet("captain", '../assets/captain-m-001-light.png', {
         frameWidth: 48,
+        frameHeight: 64
+    });
+    // Load Explosion
+    this.load.spritesheet("boom", '../assests/exp2.jpg', {
+        frameWidth: 64,
         frameHeight: 64
     });
     // load audio
     this.load.audio('music', ['../assets/Pirate1_Theme1.mp3', '../assets/Pirate_Theme.ogg']); // background music
     this.load.audio('waves', '../assets/oceanwaves.ogg'); // ocean waves
     this.load.audio('arrr', '../assets/arrr.wav'); // death chant
-
-    // to add
-    // jumping sound
-    // coin collect sound
+    this.load.audio('kaching', '../assets/coinSound.wav'); // coin collect sound
+    this.load.audio('jump', '../assets/jump.wav'); // jumping sound
+    this.load.audio('canon', "../assets/cannonFire.wav") // cannon fire sound
+    this.load.audio('explosion', '../assets/explosion.mp3') // explosion sound
 }
 
 function create() {
@@ -98,7 +100,7 @@ function create() {
     this.anims.create({
         key: 'left',
         frames: this.anims.generateFrameNumbers('captain', { start: 10, end: 12 }),
-        frameRate: 10,
+        frameRate: 12,
         repeat: -1
     });
 
@@ -111,7 +113,7 @@ function create() {
     this.anims.create({
         key: 'right',
         frames: this.anims.generateFrameNumbers('captain', { start: 3, end: 5 }),
-        frameRate: 10,
+        frameRate: 12,
         repeat: -1
     });
 
@@ -150,7 +152,6 @@ function create() {
 
     //  The Game Over text....
     gameOverText = this.add.text(412, 300, 'Game Over', { fontSize: '32px', fill: '#000' });
-    //this.gameOverText.setOrigin(0.5);
     gameOverText.visible = false;
 }
 
@@ -169,36 +170,37 @@ function update() {
         // Check that data was store successfuly
         console.log("User: " + userName + "'s score is " + finalScore + " at " + timeStamp + ".");
 
-        var gameData = {
-            userName: userName,
-            score: finalScore,
-            date: timeStamp
-        }
+
 
         $.ajax({
             method: "POST",
-            url: "/api/posts/scores",
-            data: gameData
-        })
-        // Reset gameOver to prevent update() loop and prepare game to restart
-        gameOver = false;
-        window.confirm("Would you like to play again?");
-        // add call to start function again
-        if (confirm) {
-            location.reload();
-        } else {
-        return;
-        }
+            url: "/api/player",
+            data: { username: userName, score: finalScore}
 
+        }).then((res) => {
+            console.log(res);
+        })
+
+        // Reset gameOver to prevent update() loop and prepare game to restart
+
+        gameOverText.visible = true;
+        gameOver = false;
+        // if (this.spacebar.isDown) {
+        //     // add call to start function again
+        //     console.log('Spacebar is pressed');
+        //     location.reload();
+        // } else {
+        return;
+        // }
     }
 
     if (cursors.left.isDown) {
-        player.setVelocityX(-160);
+        player.setVelocityX(-200);
 
         player.anims.play('left', true);
     }
     else if (cursors.right.isDown) {
-        player.setVelocityX(160);
+        player.setVelocityX(200);
 
         player.anims.play('right', true);
     }
@@ -210,12 +212,24 @@ function update() {
 
     if (cursors.up.isDown && player.body.touching.down) {
         player.setVelocityY(-330);
+        let jump = this.sound.add('jump', {
+            volume: .7,
+            loop: false
+        });
+        jump.play();
     }
+    //keys.explosion.onUp.add(playFx, this);
 }
 
 function collectCoin(player, coin) {
     coin.disableBody(true, true);
-    // this.starsBurst.explode();
+    // play coin sound
+    let kaching = this.sound.add('kaching', {
+        volume: 1,
+        loop: false
+    });
+    kaching.play();
+
     //  Add and update the score
     score += 10;
     scoreText.setText('Score: ' + score);
@@ -228,37 +242,31 @@ function collectCoin(player, coin) {
 
         });
 
-  //  Add and update the score
-  score += 10;
-  scoreText.setText("Score: " + score);
+        var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
 
+        //canon.play("",0,1,false);
         var bomb = bombs.create(x, 16, 'bomb');
         bomb.setBounce(1);
         bomb.setCollideWorldBounds(true);
         bomb.setVelocity(Phaser.Math.Between(-200, 200), 30);
         bomb.allowGravity = false;
 
-    var x =
-      player.x < 400
-        ? Phaser.Math.Between(400, 800)
-        : Phaser.Math.Between(0, 400);
-
-    var bomb = bombs.create(x, 16, "bomb");
-    bomb.setBounce(1);
-    bomb.setCollideWorldBounds(true);
-    bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
-    bomb.allowGravity = false;
-  }
+    }
 }
 
 function hitBomb(player, bomb) {
-  this.physics.pause();
+    this.physics.pause();
 
-  player.setTint(0xff0000);
+    player.setTint(0xff0000);
 
-  player.anims.play("turn");
+    player.anims.play('turn');
+
+    // and action sounds
+    let explosion = this.sound.add('explosion', {
+        volume: 1,
+        loop: false
+    });
+    explosion.play();
 
     gameOver = true;
-
-    gameOverText.visible = true;
 }

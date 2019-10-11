@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Player = sequelize.define("Player", {
-    user_name: {
+    username: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     score: {
-      type: DataTypes.TEXT,
+      type: DataTypes.INTEGER,
       allowNull: false,
       validate: {
         len: [1]
