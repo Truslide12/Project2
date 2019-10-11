@@ -7,7 +7,7 @@
 CREATE DATABASE rumrunner_db;
 USE rumrunner_db;
 
-CREATE TABLE leaderboard
+CREATE TABLE scores
 (
 	user_id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	user_name varchar(255) NOT NULL,

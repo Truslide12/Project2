@@ -46,6 +46,7 @@
         var explosion;
         var kaching;
         var jump;
+        var restartTimer;
         // var highScore = JSON.parse 
         // var userName;
 
@@ -172,6 +173,8 @@
             //  The Game Over text....
             gameOverText = this.add.text(412, 300, 'Game Over', { fontSize: '32px', fill: '#000' });
             gameOverText.visible = false;
+
+ 
         }
 
         function update() {
@@ -204,13 +207,9 @@
 
                 gameOverText.visible = true;
                 gameOver = false;
-                // if (this.spacebar.isDown) {
-                //     // add call to start function again
-                //     console.log('Spacebar is pressed');
-                //     location.reload();
-                // } else {
-                return;
-                // }
+                           //create restarTimer
+                restartTimer = this.time.delayedCall(3000, location.reload(), [], this);
+                restartTimer.start();
             }
 
             if (cursors.left.isDown) {
