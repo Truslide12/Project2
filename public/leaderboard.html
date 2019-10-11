@@ -55,23 +55,28 @@
 
         $(document).ready(function () {
             // leaderboardContainer holds all of our player's scores
-            var app = require("../models")
+            // var app = require("../models")
             var leaderboardContainer = $(".leaderboard-container");
             var players;
 
             function getPlayers() {
-                app.get("/api/player", function (req, res) {
-                    db.Player.findAll({
-                        //order: ["score"]
-                    }).then(function() {
-                                $.each(res, function(i, player) {
-                                    var $tr = $('<tr>').append(
-                                        $('<td>').text(player.user_name),
-                                        $('<td>').text(player.score),
-                                    ); 
-                                });
-                            });
-                });
+                $.ajax({
+                    method: "GET",
+                    url: "/api/player",
+                }).then((res) => {
+                    for (var i = 0; i < res.length; i++) {
+                        var tR = $("<tr>");
+
+                        tR.append(
+                            $("<td>").text(res[i].username),
+                            $("<td>").text(res[i].score),
+                            $("<td>").text(res[i].createdAt)
+                        );
+                        $("tbody").append(tR);
+                        // console.log(res[i]);
+                        // console.log(res[i].username);
+                    }
+                })
             }
 
             // Getting the initial list of posts
@@ -89,9 +94,9 @@
             //         response = $.parseJSON(response)
             //     });
             //     }
-         })
-            
-            </script>
-            </body>
-            
-            </html>
+        })
+
+    </script>
+</body>
+
+</html>
