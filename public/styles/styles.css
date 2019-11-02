@@ -136,12 +136,13 @@ padding-top: 0; */
   text-decoration: none;
   font-family: 'Grenze', serif;
 }
+
 table {
-  padding-left: 50px;
+  padding-left: 250px;
+  width :80%
 }
 
 th {
-  width: 25%;
   font-size: 60px;
 }
 
@@ -150,7 +151,7 @@ tr {
 }
 
 td {
-  width: 25%;
+  text-align:center
 }
 
 #thoughtBubble{
